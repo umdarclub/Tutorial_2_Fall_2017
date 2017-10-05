@@ -26,8 +26,16 @@ public class Player : MonoBehaviour {
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
 
+        // use for debugging
+        fwd = transform.TransformDirection(Vector3.forward);
+        currPos = transform.position;
+        Debug.DrawRay(currPos, fwd * distance_of_ray, Color.black);
 
-        
+        if (Physics.Raycast(currPos, fwd, out hit, distance_of_ray))
+        {
+            if (hit.collider.tag == "evil_cynlinder")
+                Debug.Log("Found an object - distance: " + hit.distance);
+        }
     }
 
     void fixedUpdated()
@@ -39,7 +47,8 @@ public class Player : MonoBehaviour {
         if (Physics.Raycast(currPos, fwd, out hit, distance_of_ray))
         {
             if (hit.collider.tag == "evil_cynlinder")
-                Debug.Log("Found an object - distance: " + hit.distance);
+            {                    }
+             
 
         }
     }
