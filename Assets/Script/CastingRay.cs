@@ -12,14 +12,15 @@ public class CastingRay : MonoBehaviour {
 
     void awake()
     {
-       
+            turn = 3.0f;
+            speed = 150.0f;
 
     }
 
     void Update()
     {
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime *speed;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime * turn;
 
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
