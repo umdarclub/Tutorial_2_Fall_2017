@@ -13,24 +13,27 @@ public class Player : MonoBehaviour {
     void Awake()
     {
         distance_of_ray = 10f;
-        speed = 150f;
-        turn = 3f;
-        
+        turn = 150f;
+        speed = 3f;
     }
 
     void FixedUpdate()
     {
+        move();
         raycasting();  
+    }
+
+    private void move()
+    {
+        float y = Input.GetAxis("Horizontal") * Time.deltaTime * turn;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+
+        transform.Rotate(0, y, 0);
+        transform.Translate(0, 0, z);
     }
 
     private void raycasting()
     {
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * turn;
-
-        transform.Rotate(0, x, 0);
-        transform.Translate(0, 0, z);
-
         // use for debugging
         fwd = transform.TransformDirection(Vector3.forward);
         currPos = transform.position;
