@@ -20,7 +20,11 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate()
     {
+        raycasting();  
+    }
 
+    private void raycasting()
+    {
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime * turn;
 
@@ -30,13 +34,13 @@ public class Player : MonoBehaviour {
         // use for debugging
         fwd = transform.TransformDirection(Vector3.forward);
         currPos = transform.position;
-       
+
         Debug.DrawRay(currPos, fwd * distance_of_ray, Color.black);
 
         if (Physics.Raycast(currPos, fwd, out hit, distance_of_ray))
         {
-			//float distance = hit.distance;
-			//print(distance + "  " + hit.collider.gameObject.name);
+            //float distance = hit.distance;
+            //print(distance + "  " + hit.collider.gameObject.name);
 
             if (hit.collider.tag == "evil_cynlinder")
             {
@@ -46,7 +50,5 @@ public class Player : MonoBehaviour {
             }
         }
     }
-
-
 
 }

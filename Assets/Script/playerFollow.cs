@@ -12,7 +12,7 @@ public class playerFollow : MonoBehaviour
     //use awake to init variables, that are private
     //Essentially Awake can be seen a constructor
     //for any class that inherets from MonoBehaviour
-    private void Awake()
+    void Awake()
     {
         player = GameObject.Find("Robot").transform;
         cam = GameObject.Find("Main Camera").transform;
@@ -21,6 +21,12 @@ public class playerFollow : MonoBehaviour
 
     // Update is called once per frame
     void Update () 
+    {
+        move();
+    }
+
+    //encapsulating
+    private void move()
     {
         if (player)
         {
