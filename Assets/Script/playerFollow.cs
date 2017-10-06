@@ -25,7 +25,7 @@ public class playerFollow : MonoBehaviour
         if (player)
         {
             currentPosition = new Vector3(player.position.x, cameraHeight, player.position.z - 3);
-            cam.SetPositionAndRotation(currentPosition, Quaternion.Euler(30.0f, 0.0f, 0.0f));
+            cam.SetPositionAndRotation(currentPosition, Quaternion.Euler(20.0f, 0.0f, 0.0f));
         }
     }
 }
