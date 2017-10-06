@@ -6,19 +6,20 @@ public class Player : MonoBehaviour {
 
 
     private RaycastHit hit;
-    private Vector3 fwd;
-    private Vector3 currPos ;
+    private Vector3 fwd, currPos;
+    private float distance_of_ray, turn, speed;
 
-    void awake()
+    void Awake()
     {
-           
+        distance_of_ray = 10f;
+        speed = 150f;
+        turn = 3f;
+        
     }
 
-    void Update()
+    void FixedUpdate()
     {
-		float distance_of_ray = 10f;
-        float turn = 3.0f;
-        float speed = 150.0f;
+
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime * turn;
 
@@ -38,18 +39,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    /*void fixedUpdated()
-    {
-        fwd = transform.TransformDirection(Vector3.forward);
-        currPos = transform.position;
-        Debug.DrawRay(currPos, fwd * distance_of_ray, Color.black);
 
-        if (Physics.Raycast(currPos, fwd, out hit, distance_of_ray))
-        {
-            if (hit.collider.tag == "evil_cynlinder")
-            {                    }
-             
 
-        }
-    }*/
 }
