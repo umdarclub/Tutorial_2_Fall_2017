@@ -49,7 +49,6 @@ public class Player : MonoBehaviour {
             {
                 Destroy(hit.collider.gameObject);
                 Transform explosionClone = Instantiate(explosion, hit.collider.transform.position, hit.collider.transform.rotation);
-                Destroy(explosionClone.gameObject, 3);
             }
         }
     }
